@@ -15,7 +15,8 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_hooks: ^0.21.0
-  forui: ^0.15.0
+  forui:
+    path: ../forui
 
 dev_dependencies:
   flutter_test:
