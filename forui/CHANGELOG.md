@@ -6,24 +6,49 @@ We've improved the styles' generated documentation. They should be much easier t
 
 
 ### `FAccordion`
-
 * Add `FAccordionMotion`.
+
 * **Breaking** Move animation related fields from `FAccordionStyle` to `FAccordionMoton`.
 
 
 ### `FAutocomplete`
+* Add `FAutocomplete.onReset`.
+* Add `FAutocompletController(popoverMotion: ...)`.
 
 * **Breaking** Change `FAutocompleteContentStyle.loadingIndicatorStyle` to `FAutocompleteContentStyle.progressStyle`.
 
 
+### `FCheckbox`
+* Add `FCheckboxMotion`.
+
+* **Breaking** Move animation related fields from `FCheckboxStyle` to `FCheckboxMotion`.
+* Fix `FCheckbox` flickering when rapidly hovering.
+
+
 ### `FDateField`
+* Add `FDateField.onReset`.
 
 * **Breaking** Replace `FDateFieldController(animationDuration: ...)` with `FDateFieldController(popoverMotion: ...)`.
 
 
-### `FPopover` & `FPopoverMenu`
+### `FDialog`
+* Add `FDialogRouteStyle`.
+* Add `FDialogRouteMotion`.
+* Add `showFDialog(routeStyle: ...)`.
+* Add `FDialogMotion`.
 
+* **Breaking** Move barrier related fields from `FDialogStyle` to `FDialogRouteStyle`.
+* **Breaking** Move animation related fields from `FDialogStyle` to `FDialogMotion`.
+
+
+### `FFormField`
+* **Breaking** Add `FFormField(onReset: ...)`.
+* **Breaking** Add `FFormFieldProperties(onReset: ...)`.
+
+
+### `FPopover` & `FPopoverMenu`
 * Add `FPopoverMotion`.
+
 * Change default animations to be more subtle.
 * **Breaking** Replace `FPopoverController(animationDuration: ...)` with `FPopoverController(motion: ...)`.
 * **Breaking** Change `FPopoverMenu.hideRegion`'s default value from `FHidePopoverRegion.anywhere` to `FHidePopoverRegion.excludeChild`.
@@ -37,28 +62,71 @@ We've reworked `FProgress` to be more customizable and easier to use.
 * Add `FInheritedCircularProgressStyle`.
 * Add `FDeterminateProgress` which represents determinate linear progress.
 * Add `FDeterminateProgressStyle`.
+
 * **Breaking** Change `FProgress` to represent indeterminate linear progress.
 * **Breaking** Remove `FProgressStyles`.
 
 
+### `FRadio`
+* Add `FRadioMotion`.
+
+* **Breaking** Move animation related fields from `FRadioStyle` to `FRadioMotion`.
+
+
 ### `FSelect` & `FMultiSelect`
+* Add `FSelect.onReset`.
+* Add `FMultiSelect.onReset`.
 
 * **Breaking** Rename `FSelectSearchStyle.loadingIndicatorStyle` to `FSelectSearchStyle.progressStyle`.
 * **Breaking** Replace `FSelectController(animationDuration: ...)` with `FSelectController(popoverMotion: ...)`.
 * **Breaking** Replace `FMultiSelectController(animationDuration: ...)` with `FMultiSelectController(popoverMotion: ...)`.
 
 
+### `FSelectGroup`
+* Add `FSelectGroup.onReset`.
+
+
+### `FSelectMenuTile`
+* Add `FSelectMenuTile.onReset`.
+
+
+### `FSelectTileGroup`
+* Add `FSelectTileGroup.onReset`.
+
+
+### `FSheet`
+* Add `FModalSheetStyle`.
+* Add `FPersistentSheetStyle`.
+* Add `FSheetMotion`.
+* Add `FModalSheetMotion`.
+* Add `FPersistentSheetMotion`.
+* Add `FModalSheet(onClosing: ...)`.
+* Add `FPersistentSheet(onClosing: ...)`.
+
+* **Breaking** Split `FSheetStyle` into `FModalSheetStyle` and `FPersistentSheetStyle`.
+* **Breaking** Move animation related fields from `FSheetStyle` to `FSheetMotion`.
+
+
+### `FSidebar`
+* Add `FSidebarItemMotion`.
+
+* **Breaking** Move animation related fields from `FSiderbarItemStyle` to `FSiderbarItemMotion`.
+
+
+### `FSlider`
+* Add `FSlider.onReset`.
+* Add `FSliderStyle.tooltipMotion`.
+
+
+### `FTab`
+* Add `FTabMotion`.
+* **Breaking** Replace `FTabController(animationDuration: ...)` with `FTabController(motion: ...)`.
+
+
 ### `FTappable`
-
 * Add `FTappableMotion`.
+
 * **Breaking** Move animation related fields from `FTappableStyle` to `FTappableMotion`.
-
-
-### `FThemeData`
-We've added support for animated theme transitions. This should make transitions between themes gradual instead of abrupt.
-
-* Add `FThemeData.lerp(...)`.
-* Change `FThemeData.copyWith(...)` to accept style builder functions.
 
 
 ### `FTextField` & `FTextFormField`
@@ -66,16 +134,37 @@ We've added a password visibility toggle to password fields.
 
 * Add password visibility toggle to `FTextField.password(...)`.
 * Add password visibility toggle to `FTextFormField.password(...)`.
+* Add `FTextFormField.onReset`.
+
+
+### `FThemeData`
+We've added support for animated theme transitions. This should make transitions between themes gradual instead of abrupt.
+
+* Add `FThemeData.lerp(...)`.
+
+* Change `FThemeData.copyWith(...)` to accept style builder functions.
 
 
 ### `FTimeField`
+* Add `FTimeField.onReset`.
 
 * **Breaking** Replace `FTimeFieldController(animationDuration: ...)` with `FTimeFieldController(popoverMotion: ...)`.
 
 
-### `FTooltip`
+### `FToast`
+* Add `FToastMotion`.
+* Add `FToasterMotion`.
 
+* Change animation to be more subtle.
+* **Breaking** Move animation related fields from `FToastStyle` to `FToastMotion`.
+* **Breaking** Move animation related fields from `FToasterStyle` to `FToasterMotion`.
+
+* Remove no-op `FToast.onDismiss` parameter that was accidentally included.
+
+
+### `FTooltip`
 * Add `FTooltipMotion`.
+
 * **Breaking** Replace `FTooltipController(animationDuration: ...)` with `FTooltipController(motion: ...)`.
 
 
@@ -86,14 +175,17 @@ We've added a password visibility toggle to password fields.
 * Add `FWidgetStateMap.lerpTextStyle(...)`.
 * Add `FWidgetStateMap.lerpWhere(...)`.
 
+
 ### `FToaster`
 * Add `FToaster.of(...)`.
+
 * Make `FToasterState.show(context: ...)` optional.
 
 
 ## Others
 * Add `FImmutableTween`.
 * Add `FLabel.expands`.
+
 * Fix `FTextField.expands` causing a render error.
 
 

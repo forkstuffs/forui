@@ -38,14 +38,30 @@ class TransformationsExtension {
   @protected
   Method get copyWith {
     // Copy the documentation comments from the fields.
-    final docs = [
-      '/// ## Parameters',
-      for (final field in fields)
-        if (field.documentationComment?.split('.').firstOrNull case final comment?)
-          '/// * [${element.name3}.${field.name3}] - ${comment.replaceFirst('/// ', '')}.'
-        else
-          '/// * [${element.name3}.${field.name3}]',
-    ];
+    final docs = ['/// ## Parameters'];
+
+    for (final field in fields) {
+      final prefix = '/// * [${element.name3}.${field.name3}]';
+      final lines = field.documentationComment?.split('\n') ?? const <String>[];
+
+      switch (lines.firstOrNull) {
+        case final comment? when comment.startsWith('/// {@macro'):
+          docs.add('$prefix - \n$comment');
+          continue;
+
+        case final comment? when comment.startsWith('/// {@template'):
+          final summary = lines.skip(1).join('\n').replaceFirst('/// ', '').split('.').firstOrNull;
+          final suffix = summary == null ? '' : ' - $summary.';
+          docs.add('$prefix$suffix');
+          continue;
+
+        default:
+          final summary = field.documentationComment?.replaceFirst('/// ', '').split('.').firstOrNull;
+          final suffix = summary == null ? '' : ' - $summary.';
+          docs.add('$prefix$suffix');
+          continue;
+      }
+    }
 
     // Generate assignments for the copyWith method body
     final assignments = fields.map((f) {
