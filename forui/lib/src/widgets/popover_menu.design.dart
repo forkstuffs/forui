@@ -20,8 +20,8 @@ extension $FPopoverMenuStyleTransformations on FPopoverMenuStyle {
   /// * [FPopoverMenuStyle.tileGroupStyle] - The tile group's style.
   /// * [FPopoverMenuStyle.maxWidth] - The menu's max width.
   /// * [FPopoverMenuStyle.decoration] - The popover's decoration.
-  /// * [FPopoverMenuStyle.barrierFilter] - {@template forui.
-  /// * [FPopoverMenuStyle.backgroundFilter] - {@template forui.
+  /// * [FPopoverMenuStyle.barrierFilter] - An optional callback that takes the current animation transition value (0.
+  /// * [FPopoverMenuStyle.backgroundFilter] - An optional callback that takes the current animation transition value (0.
   /// * [FPopoverMenuStyle.viewInsets] - The additional insets of the view.
   @useResult
   FPopoverMenuStyle copyWith({

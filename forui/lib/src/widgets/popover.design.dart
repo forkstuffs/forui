@@ -118,8 +118,8 @@ extension $FPopoverStyleTransformations on FPopoverStyle {
   ///
   /// ## Parameters
   /// * [FPopoverStyle.decoration] - The popover's decoration.
-  /// * [FPopoverStyle.barrierFilter] - {@template forui.
-  /// * [FPopoverStyle.backgroundFilter] - {@template forui.
+  /// * [FPopoverStyle.barrierFilter] - An optional callback that takes the current animation transition value (0.
+  /// * [FPopoverStyle.backgroundFilter] - An optional callback that takes the current animation transition value (0.
   /// * [FPopoverStyle.viewInsets] - The additional insets of the view.
   @useResult
   FPopoverStyle copyWith({

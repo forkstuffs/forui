@@ -29,6 +29,7 @@ mixin _$FThemeDataFunctions on Diagnosticable {
   FCircularProgressStyle get circularProgressStyle;
   FDateFieldStyle get dateFieldStyle;
   FDeterminateProgressStyle get determinateProgressStyle;
+  FDialogRouteStyle get dialogRouteStyle;
   FDialogStyle get dialogStyle;
   FDividerStyles get dividerStyles;
   FHeaderStyles get headerStyles;
@@ -37,7 +38,9 @@ mixin _$FThemeDataFunctions on Diagnosticable {
   FLabelStyles get labelStyles;
   FLineCalendarStyle get lineCalendarStyle;
   FMultiSelectStyle get multiSelectStyle;
+  FModalSheetStyle get modalSheetStyle;
   FPaginationStyle get paginationStyle;
+  FPersistentSheetStyle get persistentSheetStyle;
   FPickerStyle get pickerStyle;
   FPopoverStyle get popoverStyle;
   FPopoverMenuStyle get popoverMenuStyle;
@@ -48,7 +51,6 @@ mixin _$FThemeDataFunctions on Diagnosticable {
   FSelectStyle get selectStyle;
   FSelectGroupStyle get selectGroupStyle;
   FSelectMenuTileStyle get selectMenuTileStyle;
-  FSheetStyle get sheetStyle;
   FSidebarStyle get sidebarStyle;
   FSliderStyles get sliderStyles;
   FToasterStyle get toasterStyle;
@@ -90,6 +92,7 @@ mixin _$FThemeDataFunctions on Diagnosticable {
       ..add(DiagnosticsProperty('circularProgressStyle', circularProgressStyle, level: DiagnosticLevel.debug))
       ..add(DiagnosticsProperty('dateFieldStyle', dateFieldStyle, level: DiagnosticLevel.debug))
       ..add(DiagnosticsProperty('determinateProgressStyle', determinateProgressStyle, level: DiagnosticLevel.debug))
+      ..add(DiagnosticsProperty('dialogRouteStyle', dialogRouteStyle, level: DiagnosticLevel.debug))
       ..add(DiagnosticsProperty('dialogStyle', dialogStyle, level: DiagnosticLevel.debug))
       ..add(DiagnosticsProperty('dividerStyles', dividerStyles, level: DiagnosticLevel.debug))
       ..add(DiagnosticsProperty('headerStyles', headerStyles, level: DiagnosticLevel.debug))
@@ -98,7 +101,9 @@ mixin _$FThemeDataFunctions on Diagnosticable {
       ..add(DiagnosticsProperty('labelStyles', labelStyles, level: DiagnosticLevel.debug))
       ..add(DiagnosticsProperty('lineCalendarStyle', lineCalendarStyle, level: DiagnosticLevel.debug))
       ..add(DiagnosticsProperty('multiSelectStyle', multiSelectStyle, level: DiagnosticLevel.debug))
+      ..add(DiagnosticsProperty('modalSheetStyle', modalSheetStyle, level: DiagnosticLevel.debug))
       ..add(DiagnosticsProperty('paginationStyle', paginationStyle, level: DiagnosticLevel.debug))
+      ..add(DiagnosticsProperty('persistentSheetStyle', persistentSheetStyle, level: DiagnosticLevel.debug))
       ..add(DiagnosticsProperty('pickerStyle', pickerStyle, level: DiagnosticLevel.debug))
       ..add(DiagnosticsProperty('popoverStyle', popoverStyle, level: DiagnosticLevel.debug))
       ..add(DiagnosticsProperty('popoverMenuStyle', popoverMenuStyle, level: DiagnosticLevel.debug))
@@ -109,7 +114,6 @@ mixin _$FThemeDataFunctions on Diagnosticable {
       ..add(DiagnosticsProperty('selectStyle', selectStyle, level: DiagnosticLevel.debug))
       ..add(DiagnosticsProperty('selectGroupStyle', selectGroupStyle, level: DiagnosticLevel.debug))
       ..add(DiagnosticsProperty('selectMenuTileStyle', selectMenuTileStyle, level: DiagnosticLevel.debug))
-      ..add(DiagnosticsProperty('sheetStyle', sheetStyle, level: DiagnosticLevel.debug))
       ..add(DiagnosticsProperty('sidebarStyle', sidebarStyle, level: DiagnosticLevel.debug))
       ..add(DiagnosticsProperty('sliderStyles', sliderStyles, level: DiagnosticLevel.debug))
       ..add(DiagnosticsProperty('toasterStyle', toasterStyle, level: DiagnosticLevel.debug))
@@ -148,6 +152,7 @@ mixin _$FThemeDataFunctions on Diagnosticable {
           circularProgressStyle == other.circularProgressStyle &&
           dateFieldStyle == other.dateFieldStyle &&
           determinateProgressStyle == other.determinateProgressStyle &&
+          dialogRouteStyle == other.dialogRouteStyle &&
           dialogStyle == other.dialogStyle &&
           dividerStyles == other.dividerStyles &&
           headerStyles == other.headerStyles &&
@@ -156,7 +161,9 @@ mixin _$FThemeDataFunctions on Diagnosticable {
           labelStyles == other.labelStyles &&
           lineCalendarStyle == other.lineCalendarStyle &&
           multiSelectStyle == other.multiSelectStyle &&
+          modalSheetStyle == other.modalSheetStyle &&
           paginationStyle == other.paginationStyle &&
+          persistentSheetStyle == other.persistentSheetStyle &&
           pickerStyle == other.pickerStyle &&
           popoverStyle == other.popoverStyle &&
           popoverMenuStyle == other.popoverMenuStyle &&
@@ -167,7 +174,6 @@ mixin _$FThemeDataFunctions on Diagnosticable {
           selectStyle == other.selectStyle &&
           selectGroupStyle == other.selectGroupStyle &&
           selectMenuTileStyle == other.selectMenuTileStyle &&
-          sheetStyle == other.sheetStyle &&
           sidebarStyle == other.sidebarStyle &&
           sliderStyles == other.sliderStyles &&
           toasterStyle == other.toasterStyle &&
@@ -203,6 +209,7 @@ mixin _$FThemeDataFunctions on Diagnosticable {
       circularProgressStyle.hashCode ^
       dateFieldStyle.hashCode ^
       determinateProgressStyle.hashCode ^
+      dialogRouteStyle.hashCode ^
       dialogStyle.hashCode ^
       dividerStyles.hashCode ^
       headerStyles.hashCode ^
@@ -211,7 +218,9 @@ mixin _$FThemeDataFunctions on Diagnosticable {
       labelStyles.hashCode ^
       lineCalendarStyle.hashCode ^
       multiSelectStyle.hashCode ^
+      modalSheetStyle.hashCode ^
       paginationStyle.hashCode ^
+      persistentSheetStyle.hashCode ^
       pickerStyle.hashCode ^
       popoverStyle.hashCode ^
       popoverMenuStyle.hashCode ^
@@ -222,7 +231,6 @@ mixin _$FThemeDataFunctions on Diagnosticable {
       selectStyle.hashCode ^
       selectGroupStyle.hashCode ^
       selectMenuTileStyle.hashCode ^
-      sheetStyle.hashCode ^
       sidebarStyle.hashCode ^
       sliderStyles.hashCode ^
       toasterStyle.hashCode ^

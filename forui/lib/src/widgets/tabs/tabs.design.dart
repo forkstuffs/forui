@@ -10,6 +10,47 @@ part of 'tabs.dart';
 // **************************************************************************
 
 /// Provides [copyWith] and [lerp] methods.
+extension $FTabMotionTransformations on FTabMotion {
+  /// Returns a copy of this [FTabMotion] with the given properties replaced.
+  ///
+  /// ## Parameters
+  /// * [FTabMotion.duration] - The duration of the tab change animation.
+  /// * [FTabMotion.curve] - The curve of the tab change animation.
+  @useResult
+  FTabMotion copyWith({Duration? duration, Curve? curve}) =>
+      FTabMotion(duration: duration ?? this.duration, curve: curve ?? this.curve);
+
+  /// Linearly interpolate between this and another [FTabMotion] using the given factor [t].
+  @useResult
+  FTabMotion lerp(FTabMotion other, double t) =>
+      FTabMotion(duration: t < 0.5 ? duration : other.duration, curve: t < 0.5 ? curve : other.curve);
+}
+
+mixin _$FTabMotionFunctions on Diagnosticable {
+  Duration get duration;
+  Curve get curve;
+
+  /// Returns itself.
+  @useResult
+  FTabMotion call(Object? _) => this as FTabMotion;
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('duration', duration, level: DiagnosticLevel.debug))
+      ..add(DiagnosticsProperty('curve', curve, level: DiagnosticLevel.debug));
+  }
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) || (other is FTabMotion && duration == other.duration && curve == other.curve);
+
+  @override
+  int get hashCode => duration.hashCode ^ curve.hashCode;
+}
+
+/// Provides [copyWith] and [lerp] methods.
 extension $FTabsStyleTransformations on FTabsStyle {
   /// Returns a copy of this [FTabsStyle] with the given properties replaced.
   ///

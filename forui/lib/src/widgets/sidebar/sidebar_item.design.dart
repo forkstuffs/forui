@@ -21,10 +21,6 @@ extension $FSidebarItemStyleTransformations on FSidebarItemStyle {
   /// * [FSidebarItemStyle.iconStyle] - The icon's style.
   /// * [FSidebarItemStyle.collapsibleIconSpacing] - The spacing between the label and collapsible widget.
   /// * [FSidebarItemStyle.collapsibleIconStyle] - The collapsible icon's style.
-  /// * [FSidebarItemStyle.expandDuration] - The expand animation's duration.
-  /// * [FSidebarItemStyle.expandCurve] - The expand animation's curve.
-  /// * [FSidebarItemStyle.collapseDuration] - The collapse animation's duration.
-  /// * [FSidebarItemStyle.collapseCurve] - The collapse animation's curve.
   /// * [FSidebarItemStyle.childrenSpacing] - The spacing between child items.
   /// * [FSidebarItemStyle.childrenPadding] - The padding around the children container.
   /// * [FSidebarItemStyle.backgroundColor] - The background color.
@@ -32,6 +28,7 @@ extension $FSidebarItemStyleTransformations on FSidebarItemStyle {
   /// * [FSidebarItemStyle.borderRadius] - The item's border radius.
   /// * [FSidebarItemStyle.tappableStyle] - The tappable's style.
   /// * [FSidebarItemStyle.focusedOutlineStyle] - The focused outline style.
+  /// * [FSidebarItemStyle.motion] - The motion-related properties.
   @useResult
   FSidebarItemStyle copyWith({
     FWidgetStateMap<TextStyle>? textStyle,
@@ -39,10 +36,6 @@ extension $FSidebarItemStyleTransformations on FSidebarItemStyle {
     FWidgetStateMap<IconThemeData>? iconStyle,
     double? collapsibleIconSpacing,
     FWidgetStateMap<IconThemeData>? collapsibleIconStyle,
-    Duration? expandDuration,
-    Curve? expandCurve,
-    Duration? collapseDuration,
-    Curve? collapseCurve,
     double? childrenSpacing,
     EdgeInsetsGeometry? childrenPadding,
     FWidgetStateMap<Color>? backgroundColor,
@@ -50,16 +43,13 @@ extension $FSidebarItemStyleTransformations on FSidebarItemStyle {
     BorderRadius? borderRadius,
     FTappableStyle Function(FTappableStyle style)? tappableStyle,
     FFocusedOutlineStyle Function(FFocusedOutlineStyle style)? focusedOutlineStyle,
+    FSidebarItemMotion Function(FSidebarItemMotion motion)? motion,
   }) => FSidebarItemStyle(
     textStyle: textStyle ?? this.textStyle,
     iconSpacing: iconSpacing ?? this.iconSpacing,
     iconStyle: iconStyle ?? this.iconStyle,
     collapsibleIconSpacing: collapsibleIconSpacing ?? this.collapsibleIconSpacing,
     collapsibleIconStyle: collapsibleIconStyle ?? this.collapsibleIconStyle,
-    expandDuration: expandDuration ?? this.expandDuration,
-    expandCurve: expandCurve ?? this.expandCurve,
-    collapseDuration: collapseDuration ?? this.collapseDuration,
-    collapseCurve: collapseCurve ?? this.collapseCurve,
     childrenSpacing: childrenSpacing ?? this.childrenSpacing,
     childrenPadding: childrenPadding ?? this.childrenPadding,
     backgroundColor: backgroundColor ?? this.backgroundColor,
@@ -69,6 +59,7 @@ extension $FSidebarItemStyleTransformations on FSidebarItemStyle {
     focusedOutlineStyle: focusedOutlineStyle != null
         ? focusedOutlineStyle(this.focusedOutlineStyle)
         : this.focusedOutlineStyle,
+    motion: motion != null ? motion(this.motion) : this.motion,
   );
 
   /// Linearly interpolate between this and another [FSidebarItemStyle] using the given factor [t].
@@ -80,10 +71,6 @@ extension $FSidebarItemStyleTransformations on FSidebarItemStyle {
     collapsibleIconSpacing:
         lerpDouble(collapsibleIconSpacing, other.collapsibleIconSpacing, t) ?? collapsibleIconSpacing,
     collapsibleIconStyle: FWidgetStateMap.lerpIconThemeData(collapsibleIconStyle, other.collapsibleIconStyle, t),
-    expandDuration: t < 0.5 ? expandDuration : other.expandDuration,
-    expandCurve: t < 0.5 ? expandCurve : other.expandCurve,
-    collapseDuration: t < 0.5 ? collapseDuration : other.collapseDuration,
-    collapseCurve: t < 0.5 ? collapseCurve : other.collapseCurve,
     childrenSpacing: lerpDouble(childrenSpacing, other.childrenSpacing, t) ?? childrenSpacing,
     childrenPadding: EdgeInsetsGeometry.lerp(childrenPadding, other.childrenPadding, t) ?? childrenPadding,
     backgroundColor: FWidgetStateMap.lerpColor(backgroundColor, other.backgroundColor, t),
@@ -91,6 +78,7 @@ extension $FSidebarItemStyleTransformations on FSidebarItemStyle {
     borderRadius: BorderRadius.lerp(borderRadius, other.borderRadius, t) ?? borderRadius,
     tappableStyle: tappableStyle.lerp(other.tappableStyle, t),
     focusedOutlineStyle: focusedOutlineStyle.lerp(other.focusedOutlineStyle, t),
+    motion: motion.lerp(other.motion, t),
   );
 }
 
@@ -100,10 +88,6 @@ mixin _$FSidebarItemStyleFunctions on Diagnosticable {
   FWidgetStateMap<IconThemeData> get iconStyle;
   double get collapsibleIconSpacing;
   FWidgetStateMap<IconThemeData> get collapsibleIconStyle;
-  Duration get expandDuration;
-  Curve get expandCurve;
-  Duration get collapseDuration;
-  Curve get collapseCurve;
   double get childrenSpacing;
   EdgeInsetsGeometry get childrenPadding;
   FWidgetStateMap<Color> get backgroundColor;
@@ -111,6 +95,7 @@ mixin _$FSidebarItemStyleFunctions on Diagnosticable {
   BorderRadius get borderRadius;
   FTappableStyle get tappableStyle;
   FFocusedOutlineStyle get focusedOutlineStyle;
+  FSidebarItemMotion get motion;
 
   /// Returns itself.
   ///
@@ -145,17 +130,14 @@ mixin _$FSidebarItemStyleFunctions on Diagnosticable {
       ..add(DiagnosticsProperty('iconStyle', iconStyle, level: DiagnosticLevel.debug))
       ..add(DoubleProperty('collapsibleIconSpacing', collapsibleIconSpacing, level: DiagnosticLevel.debug))
       ..add(DiagnosticsProperty('collapsibleIconStyle', collapsibleIconStyle, level: DiagnosticLevel.debug))
-      ..add(DiagnosticsProperty('expandDuration', expandDuration, level: DiagnosticLevel.debug))
-      ..add(DiagnosticsProperty('expandCurve', expandCurve, level: DiagnosticLevel.debug))
-      ..add(DiagnosticsProperty('collapseDuration', collapseDuration, level: DiagnosticLevel.debug))
-      ..add(DiagnosticsProperty('collapseCurve', collapseCurve, level: DiagnosticLevel.debug))
       ..add(DoubleProperty('childrenSpacing', childrenSpacing, level: DiagnosticLevel.debug))
       ..add(DiagnosticsProperty('childrenPadding', childrenPadding, level: DiagnosticLevel.debug))
       ..add(DiagnosticsProperty('backgroundColor', backgroundColor, level: DiagnosticLevel.debug))
       ..add(DiagnosticsProperty('padding', padding, level: DiagnosticLevel.debug))
       ..add(DiagnosticsProperty('borderRadius', borderRadius, level: DiagnosticLevel.debug))
       ..add(DiagnosticsProperty('tappableStyle', tappableStyle, level: DiagnosticLevel.debug))
-      ..add(DiagnosticsProperty('focusedOutlineStyle', focusedOutlineStyle, level: DiagnosticLevel.debug));
+      ..add(DiagnosticsProperty('focusedOutlineStyle', focusedOutlineStyle, level: DiagnosticLevel.debug))
+      ..add(DiagnosticsProperty('motion', motion, level: DiagnosticLevel.debug));
   }
 
   @override
@@ -167,17 +149,14 @@ mixin _$FSidebarItemStyleFunctions on Diagnosticable {
           iconStyle == other.iconStyle &&
           collapsibleIconSpacing == other.collapsibleIconSpacing &&
           collapsibleIconStyle == other.collapsibleIconStyle &&
-          expandDuration == other.expandDuration &&
-          expandCurve == other.expandCurve &&
-          collapseDuration == other.collapseDuration &&
-          collapseCurve == other.collapseCurve &&
           childrenSpacing == other.childrenSpacing &&
           childrenPadding == other.childrenPadding &&
           backgroundColor == other.backgroundColor &&
           padding == other.padding &&
           borderRadius == other.borderRadius &&
           tappableStyle == other.tappableStyle &&
-          focusedOutlineStyle == other.focusedOutlineStyle);
+          focusedOutlineStyle == other.focusedOutlineStyle &&
+          motion == other.motion);
 
   @override
   int get hashCode =>
@@ -186,15 +165,137 @@ mixin _$FSidebarItemStyleFunctions on Diagnosticable {
       iconStyle.hashCode ^
       collapsibleIconSpacing.hashCode ^
       collapsibleIconStyle.hashCode ^
-      expandDuration.hashCode ^
-      expandCurve.hashCode ^
-      collapseDuration.hashCode ^
-      collapseCurve.hashCode ^
       childrenSpacing.hashCode ^
       childrenPadding.hashCode ^
       backgroundColor.hashCode ^
       padding.hashCode ^
       borderRadius.hashCode ^
       tappableStyle.hashCode ^
-      focusedOutlineStyle.hashCode;
+      focusedOutlineStyle.hashCode ^
+      motion.hashCode;
+}
+
+/// Provides [copyWith] and [lerp] methods.
+extension $FSidebarItemMotionTransformations on FSidebarItemMotion {
+  /// Returns a copy of this [FSidebarItemMotion] with the given properties replaced.
+  ///
+  /// ## Parameters
+  /// * [FSidebarItemMotion.expandDuration] - The expand animation's duration.
+  /// * [FSidebarItemMotion.collapseDuration] - The collapse animation's duration.
+  /// * [FSidebarItemMotion.expandCurve] - The expand animation's curve.
+  /// * [FSidebarItemMotion.collapseCurve] - The collapse animation's curve.
+  /// * [FSidebarItemMotion.fadeInCurve] - The fade-in animation's curve.
+  /// * [FSidebarItemMotion.fadeOutCurve] - The fade-out animation's curve.
+  /// * [FSidebarItemMotion.iconExpandCurve] - The icon's animation curve when expanding.
+  /// * [FSidebarItemMotion.iconCollapseCurve] - The icon's animation curve when collapsing.
+  /// * [FSidebarItemMotion.revealTween] - The reveal animation's tween.
+  /// * [FSidebarItemMotion.fadeTween] - The fade animation's tween.
+  /// * [FSidebarItemMotion.iconTween] - The icon animation's tween.
+  @useResult
+  FSidebarItemMotion copyWith({
+    Duration? expandDuration,
+    Duration? collapseDuration,
+    Curve? expandCurve,
+    Curve? collapseCurve,
+    Curve? fadeInCurve,
+    Curve? fadeOutCurve,
+    Curve? iconExpandCurve,
+    Curve? iconCollapseCurve,
+    Animatable<double>? revealTween,
+    Animatable<double>? fadeTween,
+    Animatable<double>? iconTween,
+  }) => FSidebarItemMotion(
+    expandDuration: expandDuration ?? this.expandDuration,
+    collapseDuration: collapseDuration ?? this.collapseDuration,
+    expandCurve: expandCurve ?? this.expandCurve,
+    collapseCurve: collapseCurve ?? this.collapseCurve,
+    fadeInCurve: fadeInCurve ?? this.fadeInCurve,
+    fadeOutCurve: fadeOutCurve ?? this.fadeOutCurve,
+    iconExpandCurve: iconExpandCurve ?? this.iconExpandCurve,
+    iconCollapseCurve: iconCollapseCurve ?? this.iconCollapseCurve,
+    revealTween: revealTween ?? this.revealTween,
+    fadeTween: fadeTween ?? this.fadeTween,
+    iconTween: iconTween ?? this.iconTween,
+  );
+
+  /// Linearly interpolate between this and another [FSidebarItemMotion] using the given factor [t].
+  @useResult
+  FSidebarItemMotion lerp(FSidebarItemMotion other, double t) => FSidebarItemMotion(
+    expandDuration: t < 0.5 ? expandDuration : other.expandDuration,
+    collapseDuration: t < 0.5 ? collapseDuration : other.collapseDuration,
+    expandCurve: t < 0.5 ? expandCurve : other.expandCurve,
+    collapseCurve: t < 0.5 ? collapseCurve : other.collapseCurve,
+    fadeInCurve: t < 0.5 ? fadeInCurve : other.fadeInCurve,
+    fadeOutCurve: t < 0.5 ? fadeOutCurve : other.fadeOutCurve,
+    iconExpandCurve: t < 0.5 ? iconExpandCurve : other.iconExpandCurve,
+    iconCollapseCurve: t < 0.5 ? iconCollapseCurve : other.iconCollapseCurve,
+    revealTween: t < 0.5 ? revealTween : other.revealTween,
+    fadeTween: t < 0.5 ? fadeTween : other.fadeTween,
+    iconTween: t < 0.5 ? iconTween : other.iconTween,
+  );
+}
+
+mixin _$FSidebarItemMotionFunctions on Diagnosticable {
+  Duration get expandDuration;
+  Duration get collapseDuration;
+  Curve get expandCurve;
+  Curve get collapseCurve;
+  Curve get fadeInCurve;
+  Curve get fadeOutCurve;
+  Curve get iconExpandCurve;
+  Curve get iconCollapseCurve;
+  Animatable<double> get revealTween;
+  Animatable<double> get fadeTween;
+  Animatable<double> get iconTween;
+
+  /// Returns itself.
+  @useResult
+  FSidebarItemMotion call(Object? _) => this as FSidebarItemMotion;
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('expandDuration', expandDuration, level: DiagnosticLevel.debug))
+      ..add(DiagnosticsProperty('collapseDuration', collapseDuration, level: DiagnosticLevel.debug))
+      ..add(DiagnosticsProperty('expandCurve', expandCurve, level: DiagnosticLevel.debug))
+      ..add(DiagnosticsProperty('collapseCurve', collapseCurve, level: DiagnosticLevel.debug))
+      ..add(DiagnosticsProperty('fadeInCurve', fadeInCurve, level: DiagnosticLevel.debug))
+      ..add(DiagnosticsProperty('fadeOutCurve', fadeOutCurve, level: DiagnosticLevel.debug))
+      ..add(DiagnosticsProperty('iconExpandCurve', iconExpandCurve, level: DiagnosticLevel.debug))
+      ..add(DiagnosticsProperty('iconCollapseCurve', iconCollapseCurve, level: DiagnosticLevel.debug))
+      ..add(DiagnosticsProperty('revealTween', revealTween, level: DiagnosticLevel.debug))
+      ..add(DiagnosticsProperty('fadeTween', fadeTween, level: DiagnosticLevel.debug))
+      ..add(DiagnosticsProperty('iconTween', iconTween, level: DiagnosticLevel.debug));
+  }
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is FSidebarItemMotion &&
+          expandDuration == other.expandDuration &&
+          collapseDuration == other.collapseDuration &&
+          expandCurve == other.expandCurve &&
+          collapseCurve == other.collapseCurve &&
+          fadeInCurve == other.fadeInCurve &&
+          fadeOutCurve == other.fadeOutCurve &&
+          iconExpandCurve == other.iconExpandCurve &&
+          iconCollapseCurve == other.iconCollapseCurve &&
+          revealTween == other.revealTween &&
+          fadeTween == other.fadeTween &&
+          iconTween == other.iconTween);
+
+  @override
+  int get hashCode =>
+      expandDuration.hashCode ^
+      collapseDuration.hashCode ^
+      expandCurve.hashCode ^
+      collapseCurve.hashCode ^
+      fadeInCurve.hashCode ^
+      fadeOutCurve.hashCode ^
+      iconExpandCurve.hashCode ^
+      iconCollapseCurve.hashCode ^
+      revealTween.hashCode ^
+      fadeTween.hashCode ^
+      iconTween.hashCode;
 }

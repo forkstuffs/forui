@@ -95,6 +95,7 @@ extension $FSliderStyleTransformations on FSliderStyle {
   /// * [FSliderStyle.thumbStyle] - The slider thumb's style.
   /// * [FSliderStyle.markStyle] - The slider marks' style.
   /// * [FSliderStyle.tooltipStyle] - The tooltip's style.
+  /// * [FSliderStyle.tooltipMotion] - The tooltip's motion-related properties.
   /// * [FSliderStyle.tooltipTipAnchor] - The anchor of the tooltip to which the [tooltipThumbAnchor] is aligned.
   /// * [FSliderStyle.tooltipThumbAnchor] - The anchor of the thumb to which the [tooltipTipAnchor] is aligned.
   /// * [FSliderStyle.labelPadding] - The label's padding.
@@ -114,6 +115,7 @@ extension $FSliderStyleTransformations on FSliderStyle {
     FSliderThumbStyle Function(FSliderThumbStyle style)? thumbStyle,
     FSliderMarkStyle Function(FSliderMarkStyle style)? markStyle,
     FTooltipStyle Function(FTooltipStyle style)? tooltipStyle,
+    FTooltipMotion Function(FTooltipMotion motion)? tooltipMotion,
     AlignmentGeometry? tooltipTipAnchor,
     AlignmentGeometry? tooltipThumbAnchor,
     EdgeInsetsGeometry? labelPadding,
@@ -132,6 +134,7 @@ extension $FSliderStyleTransformations on FSliderStyle {
     thumbStyle: thumbStyle != null ? thumbStyle(this.thumbStyle) : this.thumbStyle,
     markStyle: markStyle != null ? markStyle(this.markStyle) : this.markStyle,
     tooltipStyle: tooltipStyle != null ? tooltipStyle(this.tooltipStyle) : this.tooltipStyle,
+    tooltipMotion: tooltipMotion != null ? tooltipMotion(this.tooltipMotion) : this.tooltipMotion,
     tooltipTipAnchor: tooltipTipAnchor ?? this.tooltipTipAnchor,
     tooltipThumbAnchor: tooltipThumbAnchor ?? this.tooltipThumbAnchor,
     labelPadding: labelPadding ?? this.labelPadding,
@@ -154,6 +157,7 @@ extension $FSliderStyleTransformations on FSliderStyle {
     thumbStyle: thumbStyle.lerp(other.thumbStyle, t),
     markStyle: markStyle.lerp(other.markStyle, t),
     tooltipStyle: tooltipStyle.lerp(other.tooltipStyle, t),
+    tooltipMotion: tooltipMotion.lerp(other.tooltipMotion, t),
     tooltipTipAnchor: AlignmentGeometry.lerp(tooltipTipAnchor, other.tooltipTipAnchor, t) ?? tooltipTipAnchor,
     tooltipThumbAnchor: AlignmentGeometry.lerp(tooltipThumbAnchor, other.tooltipThumbAnchor, t) ?? tooltipThumbAnchor,
     labelPadding: EdgeInsetsGeometry.lerp(labelPadding, other.labelPadding, t) ?? labelPadding,
@@ -175,6 +179,7 @@ mixin _$FSliderStyleFunctions on Diagnosticable {
   FSliderThumbStyle get thumbStyle;
   FSliderMarkStyle get markStyle;
   FTooltipStyle get tooltipStyle;
+  FTooltipMotion get tooltipMotion;
   AlignmentGeometry get tooltipTipAnchor;
   AlignmentGeometry get tooltipThumbAnchor;
   EdgeInsetsGeometry get labelPadding;
@@ -221,6 +226,7 @@ mixin _$FSliderStyleFunctions on Diagnosticable {
       ..add(DiagnosticsProperty('thumbStyle', thumbStyle, level: DiagnosticLevel.debug))
       ..add(DiagnosticsProperty('markStyle', markStyle, level: DiagnosticLevel.debug))
       ..add(DiagnosticsProperty('tooltipStyle', tooltipStyle, level: DiagnosticLevel.debug))
+      ..add(DiagnosticsProperty('tooltipMotion', tooltipMotion, level: DiagnosticLevel.debug))
       ..add(DiagnosticsProperty('tooltipTipAnchor', tooltipTipAnchor, level: DiagnosticLevel.debug))
       ..add(DiagnosticsProperty('tooltipThumbAnchor', tooltipThumbAnchor, level: DiagnosticLevel.debug))
       ..add(DiagnosticsProperty('labelPadding', labelPadding, level: DiagnosticLevel.debug))
@@ -244,6 +250,7 @@ mixin _$FSliderStyleFunctions on Diagnosticable {
           thumbStyle == other.thumbStyle &&
           markStyle == other.markStyle &&
           tooltipStyle == other.tooltipStyle &&
+          tooltipMotion == other.tooltipMotion &&
           tooltipTipAnchor == other.tooltipTipAnchor &&
           tooltipThumbAnchor == other.tooltipThumbAnchor &&
           labelPadding == other.labelPadding &&
@@ -264,6 +271,7 @@ mixin _$FSliderStyleFunctions on Diagnosticable {
       thumbStyle.hashCode ^
       markStyle.hashCode ^
       tooltipStyle.hashCode ^
+      tooltipMotion.hashCode ^
       tooltipTipAnchor.hashCode ^
       tooltipThumbAnchor.hashCode ^
       labelPadding.hashCode ^
