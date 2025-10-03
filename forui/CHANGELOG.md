@@ -40,10 +40,20 @@ We've improved the styles' generated documentation. They should be much easier t
 * **Breaking** Move barrier related fields from `FDialogStyle` to `FDialogRouteStyle`.
 * **Breaking** Move animation related fields from `FDialogStyle` to `FDialogMotion`.
 
+* Fix `FDialog.body` not allowing `ScrollView`s.  
+
 
 ### `FFormField`
 * **Breaking** Add `FFormField(onReset: ...)`.
 * **Breaking** Add `FFormFieldProperties(onReset: ...)`.
+
+
+### `FHeader`
+
+* Fix `FHeader(...)` not vertically centering title.
+* Fix `FHeader(...)` not respecting RTL locales.
+* Fix `FHeader.nested(...)` not vertically centering title.
+* Fix `FHeader.nested(...)` not respecting RTL locales.
 
 
 ### `FItem`
